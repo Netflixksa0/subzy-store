@@ -5,15 +5,9 @@ body {
   color: #340202;
 }
 
-.container {
-  text-align: center;
+.app {
   padding: 30px;
-}
-
-.title {
-  font-size: 32px;
-  margin-bottom: 40px;
-  color: #500202;
+  text-align: center;
 }
 
 .cards {
@@ -77,3 +71,6 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.account-info {
+  margin-top: 40px;
