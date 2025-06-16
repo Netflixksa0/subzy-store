@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import "./App.css";
 
 function App() {
-  const [form, setForm] = useState({ email: "", phone: "" });
+  const [form, setForm] = useState({ email: "", phone: "", subscription: "" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,7 +17,7 @@ function App() {
       .then(
         () => {
           alert("تم إرسال البيانات بنجاح!");
-          setForm({ email: "", phone: "" });
+          setForm({ email: "", phone: "", subscription: "" });
         },
         (error) => {
           console.error("فشل الإرسال:", error);
@@ -54,6 +54,7 @@ function App() {
 
       <form className="form" onSubmit={handleSubmit}>
         <h2>سجل بياناتك</h2>
+
         <input
           type="email"
           name="email"
@@ -62,6 +63,7 @@ function App() {
           onChange={handleChange}
           required
         />
+
         <input
           type="tel"
           name="phone"
@@ -70,6 +72,21 @@ function App() {
           onChange={handleChange}
           required
         />
+
+        {/* نوع الاشتراك */}
+        <select
+          name="subscription"
+          value={form.subscription}
+          onChange={handleChange}
+          required
+        >
+          <option value="">-- حدد نوع الاشتراك --</option>
+          <option value="YouTube Premium">YouTube Premium</option>
+          <option value="Spotify Premium">Spotify Premium</option>
+          <option value="Disney+">Disney+</option>
+          <option value="Shahid VIP">Shahid VIP</option>
+        </select>
+
         <button type="submit">إرسال</button>
       </form>
 
