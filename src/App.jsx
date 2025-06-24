@@ -3,7 +3,11 @@ import emailjs from "@emailjs/browser";
 import "./App.css";
 
 function App() {
-  const [form, setForm] = useState({ email: "", phone: "", subscription: "" });
+  const [form, setForm] = useState({
+    user_email: "",
+    user_phone: "",
+    subscription: ""
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,17 +16,17 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log("📤 ترسل البيانات:", form);
+
     emailjs
-      .send("service_xxxxxxx", "template_pdyrmfr", form, "4ZUhJ78IGMM8CpFVF")
-      .then(
-        () => {
-          alert("تم إرسال البيانات بنجاح!");
-          setForm({ email: "", phone: "", subscription: "" });
-        },
-        (error) => {
-          console.error("فشل الإرسال:", error);
-        }
-      );
+      .send("subzy", "template_pdyrmfr", form, "4ZUhJ78IGMM8CpFVF")
+      .then(() => {
+        alert("✅ تم إرسال البيانات بنجاح!");
+        setForm({ user_email: "", user_phone: "", subscription: "" });
+      })
+      .catch((error) => {
+        console.error("❌ فشل الإرسال:", error);
+      });
   };
 
   return (
@@ -30,26 +34,18 @@ function App() {
       <h1>اشتركات المنصات</h1>
 
       <div className="cards">
-        <div className="card">
-          <img src="/youtube.png" alt="YouTube" />
-          <h2>YouTube Premium</h2>
-          <button>25 ريال</button>
-        </div>
-        <div className="card">
-          <img src="/spotify.png" alt="Spotify" />
-          <h2>Spotify Premium</h2>
-          <button>25 ريال</button>
-        </div>
-        <div className="card">
-          <img src="/disney.png" alt="Disney+" />
-          <h2>Disney+</h2>
-          <button>30 ريال</button>
-        </div>
-        <div className="card">
-          <img src="/shahid.png" alt="Shahid" />
-          <h2>Shahid VIP</h2>
-          <button>25 ريال</button>
-        </div>
+        {[
+          { img: "/youtube.png", name: "YouTube Premium", price: "25 ريال" },
+          { img: "/spotify.png", name: "Spotify Premium", price: "25 ريال" },
+          { img: "/disney.png", name: "Disney+", price: "30 ريال" },
+          { img: "/shahid.png", name: "Shahid VIP", price: "25 ريال" },
+        ].map((sub, i) => (
+          <div className="card" key={i}>
+            <img src={sub.img} alt={sub.name} />
+            <h2>{sub.name}</h2>
+            <p className="price">{sub.price}</p>
+          </div>
+        ))}
       </div>
 
       <form className="form" onSubmit={handleSubmit}>
@@ -57,23 +53,22 @@ function App() {
 
         <input
           type="email"
-          name="email"
+          name="user_email"
           placeholder="الإيميل"
-          value={form.email}
+          value={form.user_email}
           onChange={handleChange}
           required
         />
 
         <input
           type="tel"
-          name="phone"
+          name="user_phone"
           placeholder="رقم الجوال"
-          value={form.phone}
+          value={form.user_phone}
           onChange={handleChange}
           required
         />
 
-        {/* نوع الاشتراك */}
         <select
           name="subscription"
           value={form.subscription}
