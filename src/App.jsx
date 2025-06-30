@@ -36,9 +36,11 @@ function App() {
       <div className="cards">
         {[
           { img: "/youtube.png", name: "YouTube Premium", price: "25 ريال" },
-          { img: "/spotify.png", name: "Spotify Premium", price: "25 ريال" },
+          { img: "/spotify.jpg", name: "Spotify Premium", price: "25 ريال" },
           { img: "/disney.png", name: "Disney+", price: "30 ريال" },
           { img: "/shahid.png", name: "Shahid VIP", price: "25 ريال" },
+           { img: "/osn.png", name: "OSN+", price: "30 ريال" },
+            { img: "/watchit.png", name: "watchat it", price: "30 ريال" },
         ].map((sub, i) => (
           <div className="card" key={i}>
             <img src={sub.img} alt={sub.name} />
@@ -80,6 +82,8 @@ function App() {
           <option value="Spotify Premium">Spotify Premium</option>
           <option value="Disney+">Disney+</option>
           <option value="Shahid VIP">Shahid VIP</option>
+          <option value="watcht it">watch it</option>
+          <option value="OSN+">OSN+</option>
         </select>
 
         <button type="submit">إرسال</button>
