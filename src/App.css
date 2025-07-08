@@ -71,3 +71,77 @@
   margin-top: 30px;
   font-size: 18px;
 }
+
+/* ✅ زر اختر الباقة */
+.card button {
+  background-color: #ff69b4; /* وردي */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #e754a3; /* وردي أغمق */
+}
+
+/* ✅ تنسيق الباقات عند الضغط */
+.plans-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-box {
+  background-color: #fff0f5;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #f3c5d3;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+} .extra-plans {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  text-align: start;
+}
+
+.extra-plan-box {
+  background-color: #ffe4ec; /* خلفية وردية خفيفة */
+  border: 1px solid #f28cb1;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.extra-plan-box p {
+  margin: 0;
+  color: #c2185b; /* وردي غامق */
+  font-weight: bold;
+  font-size: 14px;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+}
+
