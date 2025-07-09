@@ -158,7 +158,7 @@ function App() {
         <h3>التحويل إلى الحساب التالي:</h3>
         <p>SA21800003366080109053</p>
 <a
-  href="https://wa.me/201158060283" // ← غيري الرقم لرقمك
+  href="https://wa.me/966544920067" // ← غيري الرقم لرقمك
   className="whatsapp-float"
   target="_blank"
 >
