@@ -87,7 +87,7 @@ function App() {
 
   const handleLogin = () => {
     if (!loginEmail) {
-      alert("يرجى إدخال الإيميل");
+      alert("'يرجى إدخال الإسم");
       return;
     }
 
@@ -119,7 +119,7 @@ function App() {
         <p style={{ marginBottom: "1rem" }}>سجّل دخولك للمتابعة</p>
         <input
           type="email"
-          placeholder="أدخل بريدك الإلكتروني"
+          placeholder="يرجى ادخال الاسم "
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
           style={{ padding: "0.5rem", width: "250px", borderRadius: "8px", border: "1px solid #ccc", marginBottom: "1rem" }}
