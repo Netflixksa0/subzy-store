@@ -7,8 +7,9 @@
     <title>Subzy Store</title>
 
     <!-- ✅ كود Google AdSense للتحقق -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5390945752845543"
-     crossorigin="anonymous"></script>
+    <script async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5390945752845543"
+      crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -22,9 +23,7 @@
         global.$_Tawk = global.$_Tawk || {};
         (function (w){
           function l() {
-            if (window.$_Tawk.init !== undefined) {
-              return;
-            }
+            if (window.$_Tawk.init !== undefined) return;
             window.$_Tawk.init = true;
             var files = [
               'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-main.js',
@@ -43,13 +42,9 @@
               s0.parentNode.insertBefore(s1,s0);
             }
           }
-          if (document.readyState === 'complete') {
-            l();
-          } else if (w.attachEvent) {
-            w.attachEvent('onload', l);
-          } else {
-            w.addEventListener('load', l, false);
-          }
+          if (document.readyState === 'complete') l();
+          else if (w.attachEvent) w.attachEvent('onload', l);
+          else w.addEventListener('load', l, false);
         })(window);
       })(window);
     </script>
