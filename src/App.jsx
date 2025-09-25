@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
-function App() {
+// ✅ استيراد الصفحات من مجلد pages
+import About from "./pages/About";
+import Policy from "./pages/Policy";
+import Blog from "./pages/Blog";
+
+// ✅ الكود الأصلي للمتجر
+function Home() {
   const [form, setForm] = useState({
     user_email: "",
     user_phone: "",
@@ -18,15 +25,15 @@ function App() {
       name: "YouTube Premium",
       image: "/youtube.png",
       plans: [
-        { label: " شهري فردي", price: " 15ريال" },
-        { label: " شهري عائلي", price: "25 ريال" }
+        { label: "شهري فردي", price: "15 ريال" },
+        { label: "شهري عائلي", price: "25 ريال" }
       ]
     },
     {
       name: "Spotify Premium",
       image: "/spotify.png",
       plans: [
-        { label: " شهري فردي", price: "15 ريال" },
+        { label: "شهري فردي", price: "15 ريال" },
         { label: "شهري عائلي", price: "20 ريال" }
       ]
     },
@@ -35,7 +42,7 @@ function App() {
       image: "/disney.png",
       plans: [
         { label: "شهري", price: "20 ريال" },
-        { label: "3 اشهر", price: "65 ريال" }
+        { label: "3 أشهر", price: "65 ريال" }
       ]
     },
     {
@@ -43,7 +50,7 @@ function App() {
       image: "/shahid.png",
       plans: [
         { label: "شهري", price: "25 ريال" },
-        { label: "شهرين وشهر مجانا", price: "50 ريال" },
+        { label: "شهرين + شهر مجاناً", price: "50 ريال" },
         { label: "باقة الرياضة - شهري", price: "50 ريال" },
         { label: "باقة الشامل - شهري", price: "75 ريال" }
       ]
@@ -51,9 +58,7 @@ function App() {
     {
       name: "OSN+",
       image: "/osn.png",
-      plans: [
-        { label: "شهري", price: "30 ريال" }
-      ]
+      plans: [{ label: "شهري", price: "30 ريال" }]
     },
     {
       name: "Watch It",
@@ -77,17 +82,17 @@ function App() {
     emailjs
       .send("subzy", "template_pdyrmfr", form, "4ZUhJ78IGMM8CpFVF")
       .then(() => {
-        alert("\u2705 تم إرسال البيانات بنجاح!");
+        alert("✅ تم إرسال البيانات بنجاح!");
         setForm({ user_email: "", user_phone: "", subscription: "" });
       })
       .catch((error) => {
-        console.error("\u274C فشل الإرسال:", error);
+        console.error("❌ فشل الإرسال:", error);
       });
   };
 
   const handleLogin = () => {
     if (!loginEmail) {
-      alert("'يرجى إدخال الإسم");
+      alert("يرجى إدخال الإيميل");
       return;
     }
 
@@ -103,42 +108,71 @@ function App() {
         "4ZUhJ78IGMM8CpFVF"
       )
       .then(() => {
-        alert("\u2705 تم تسجيل الدخول!");
+        alert("✅ تم تسجيل الدخول!");
         setIsLoggedIn(true);
       })
       .catch((error) => {
-        console.error("\u274C فشل تسجيل الدخول:", error);
+        console.error("❌ فشل تسجيل الدخول:", error);
       });
   };
 
   if (!isLoggedIn) {
     return (
-      <div className="app login-page" style={{ backgroundColor: "#FFBEC6", minHeight: "100vh", textAlign: "center", padding: "2rem" }}>
-        <img src="/logo.png" alt="Subzy Logo" style={{ width: "160px", marginBottom: "1rem" }} />
+      <div
+        className="app login-page"
+        style={{
+          backgroundColor: "#FFBEC6",
+          minHeight: "100vh",
+          textAlign: "center",
+          padding: "2rem"
+        }}
+      >
+        <img
+          src="/logo.png"
+          alt="Subzy Logo"
+          style={{ width: "160px", marginBottom: "1rem" }}
+        />
         <h1 style={{ marginBottom: "0.5rem" }}>مرحباً بك في Subzy</h1>
         <p style={{ marginBottom: "1rem" }}>سجّل دخولك للمتابعة</p>
         <input
           type="email"
-          placeholder="يرجى ادخال الاسم "
+          placeholder="أدخل بريدك الإلكتروني"
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
-          style={{ padding: "0.5rem", width: "250px", borderRadius: "8px", border: "1px solid #ccc", marginBottom: "1rem" }}
+          style={{
+            padding: "0.5rem",
+            width: "250px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+            marginBottom: "1rem"
+          }}
         />
         <br />
-        <button onClick={handleLogin} style={{ backgroundColor: "#f06292", color: "white", padding: "0.5rem 1.5rem", border: "none", borderRadius: "8px", fontWeight: "bold", cursor: "pointer" }}>
+        <button
+          onClick={handleLogin}
+          style={{
+            backgroundColor: "#f06292",
+            color: "white",
+            padding: "0.5rem 1.5rem",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
           تسجيل الدخول
         </button>
-        <br />
-        <a href="#subscriptions" style={{ display: "inline-block", marginTop: "1rem", color: "#f06292", fontWeight: "bold", textDecoration: "underline" }}>
-          
-        </a>
       </div>
     );
   }
 
   return (
     <div className="app" style={{ backgroundColor: "#FFBEC6" }}>
-      <img src="/logo.png" alt="Subzy Logo" style={{ width: "140px", margin: "1rem auto" }} />
+      <img
+        src="/logo.png"
+        alt="Subzy Logo"
+        style={{ width: "140px", margin: "1rem auto" }}
+      />
       <h1>أهلاً بك في متجر Subzy للاشتراكات الرقمية</h1>
       <h2 id="subscriptions">🍿🎬 الاشتراكات الترفيهية</h2>
 
@@ -147,7 +181,9 @@ function App() {
           <div className="card" key={i}>
             <img src={sub.image} alt={sub.name} />
             <h2>{sub.name}</h2>
-            <button onClick={() => setSelectedCard(selectedCard === i ? null : i)}>
+            <button
+              onClick={() => setSelectedCard(selectedCard === i ? null : i)}
+            >
               اختر الباقة
             </button>
 
@@ -165,62 +201,64 @@ function App() {
         ))}
       </div>
 
-      <form className="form" onSubmit={handleSubmit}>
-        <h2>سجل بياناتك</h2>
-
+      {/* ✅ نموذج التسجيل */}
+      <form onSubmit={handleSubmit} className="register-form">
+        <h3>📩 سجل بياناتك</h3>
         <input
           type="email"
           name="user_email"
-          placeholder="الإيميل"
+          placeholder="البريد الإلكتروني"
           value={form.user_email}
           onChange={handleChange}
           required
         />
-
         <input
-          type="tel"
+          type="text"
           name="user_phone"
           placeholder="رقم الجوال"
           value={form.user_phone}
           onChange={handleChange}
           required
         />
-
-        <select
+        <input
+          type="text"
           name="subscription"
+          placeholder="نوع الاشتراك"
           value={form.subscription}
           onChange={handleChange}
           required
-        >
-          <option value="">-- حدد نوع الاشتراك --</option>
-          {subscriptions.map((sub) =>
-            sub.plans.map((plan, index) => (
-              <option
-                key={`${sub.name}-${index}`}
-                value={`${sub.name} – ${plan.label}`}
-              >
-                {sub.name} – {plan.label}
-              </option>
-            ))
-          )}
-        </select>
-
+        />
         <button type="submit">إرسال</button>
       </form>
-
-      <div className="account-info">
-        <h3>التحويل إلى الحساب التالي:</h3>
-        <p>SA21800003366080109053</p>
-        <a
-          href="https://wa.me/966544920067"
-          className="whatsapp-float"
-          target="_blank"
-        >
-          💬 تواصل معنا على واتساب
-        </a>
-      </div>
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      {/* ✅ روابط التصفح */}
+      <nav
+        style={{
+          display: "flex",
+          gap: "1rem",
+          background: "#f8bbd0",
+          padding: "1rem",
+          justifyContent: "center"
+        }}
+      >
+        <Link to="/">الرئيسية</Link>
+        <Link to="/about">من نحن</Link>
+        <Link to="/policy">سياسة الاستخدام</Link>
+        <Link to="/blog">المدونة</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+    </Router>
+  );
+}
