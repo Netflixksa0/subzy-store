@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ProductCard = ({ title, price, image }) => {
+  useEffect(() => {
+    try {
+      const script = document.createElement("script");
+      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.setAttribute("data-ad-client", "ca-pub-5390945752845543");
+      document.head.appendChild(script);
+    } catch (error) {
+      console.error("Error loading Google AdSense script:", error);
+    }
+  }, []);
+
   return (
     <div style={styles.card}>
       <img src={image} alt={title} style={styles.image} />
