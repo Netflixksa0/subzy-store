@@ -5,48 +5,28 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Subzy Store</title>
-<meta name="verify-admitad" content="b3f8c7eb8a" />
+    <meta name="verify-admitad" content="b3f8c7eb8a" />
   </head>
   <body>
     <!-- ✅ المكان اللي راح يشتغل فيه React -->
     <div id="root"></div>
 
-    <!-- ✅ سكربت Tawk.to للدردشة -->
+    <!-- ✅ سكربت Tawk.to الأصلي لخدمة العملاء -->
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-      (function(global){
-        global.$_Tawk_AccountKey='686aa36efd0b7e1914ecdbce';
-        global.$_Tawk_WidgetId='1ivg8sqdg';
-        global.$_Tawk_Unstable=false;
-        global.$_Tawk = global.$_Tawk || {};
-        (function (w){
-          function l() {
-            if (window.$_Tawk.init !== undefined) return;
-            window.$_Tawk.init = true;
-            var files = [
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-main.js',
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-vendor.js',
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-chunk-vendors.js',
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-chunk-common.js',
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-runtime.js',
-              'https://embed.tawk.to/_s/v4/app/68662695e45/js/twk-app.js'
-            ];
-            var s0=document.getElementsByTagName('script')[0];
-            for (var i = 0; i < files.length; i++) {
-              var s1 = document.createElement('script');
-              s1.src= files[i];
-              s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
-              s0.parentNode.insertBefore(s1,s0);
-            }
-          }
-          if (document.readyState === 'complete') l();
-          else if (w.attachEvent) w.attachEvent('onload', l);
-          else w.addEventListener('load', l, false);
-        })(window);
-      })(window);
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/686aa36efd0b7e1914ecdbce/1ivg8sqdg';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
     </script>
+    <!--End of Tawk.to Script-->
 
     <!-- ✅ سكربت Vite لتشغيل React -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
-</html>     
+</html>
