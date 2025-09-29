@@ -92,7 +92,8 @@ function Home() {
 
   const handleLogin = () => {
     if (!loginEmail) {
-      alert("يرجى إدخال الإسم");
+     alert("يرجى إدخال الإسم");
+
       return;
     }
 
