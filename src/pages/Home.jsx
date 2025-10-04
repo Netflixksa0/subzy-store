@@ -21,6 +21,15 @@ function Home() {
           </Link>
         </div>
       </div>
+
+      {/* ✅ إضافة رقم الحساب البنكي */}
+      <div style={{ marginTop: "30px", padding: "15px", background: "#fce4ec", borderRadius: "10px" }}>
+        <h3>📌 رقم الحساب البنكي للتحويل:</h3>
+        <p style={{ fontWeight: "bold", fontSize: "18px", color: "darkblue" }}>
+          SA21 8000 0336 6080 1090 8353
+           <p>اسم صاحب الحساب: SALWA S. JBRSGHIR</p>
+        </p>
+      </div>
     </div>
   );
 }
