@@ -1,15 +1,12 @@
-
+// src/App.jsx
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import "./App.css";
-
-// ✅ استيراد الصفحات من مجلد pages
 import About from "./pages/About";
 import Policy from "./pages/Policy";
 import Blog from "./pages/Blog";
+import "./App.css";
 
-// ✅ الكود الأصلي للمتجر
 function Home() {
   const [form, setForm] = useState({
     user_email: "",
@@ -179,7 +176,7 @@ function Home() {
 
       <div className="cards">
         {subscriptions.map((sub, i) => (
-          <div className="card" key={i}>
+          <div className="card" key={sub.name}>
             <img src={sub.image} alt={sub.name} />
             <h2>{sub.name}</h2>
             <button
@@ -191,7 +188,13 @@ function Home() {
             {selectedCard === i && (
               <div className="plans-container">
                 {sub.plans.map((plan, j) => (
-                  <div className="plan-box" key={j}>
+                  <div
+                    className="plan-box"
+                    key={j}
+                    onClick={() =>
+                      setForm({ ...form, subscription: `${sub.name} - ${plan.label}` })
+                    }
+                  >
                     <p>{plan.label}</p>
                     <strong>{plan.price}</strong>
                   </div>
@@ -202,7 +205,7 @@ function Home() {
         ))}
       </div>
 
-      {/* ✅ نموذج التسجيل */}
+      {/* ✅ نموذج التسجيل مع Dropdown */}
       <form onSubmit={handleSubmit} className="register-form">
         <h3>📩 سجل بياناتك</h3>
         <input
@@ -221,16 +224,44 @@ function Home() {
           onChange={handleChange}
           required
         />
-        <input
-          type="text"
+        <select
           name="subscription"
-          placeholder="نوع الاشتراك"
           value={form.subscription}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">اختر نوع الاشتراك</option>
+          {subscriptions.map((sub, i) =>
+            sub.plans.map((plan, j) => (
+              <option
+                key={`${i}-${j}`}
+                value={`${sub.name} - ${plan.label}`}
+              >
+                {sub.name} - {plan.label} ({plan.price})
+              </option>
+            ))
+          )}
+        </select>
         <button type="submit">إرسال</button>
       </form>
+
+      {/* ✅ معلومات الدفع ثابتة تحت نموذج التسجيل */}
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "15px",
+          background: "#fce4ec",
+          borderRadius: "10px",
+          border: "1px solid #f06292",
+          textAlign: "center" // هذا يخلي النص في الوسط
+        }}
+      >
+        <h3>📌 رقم الحساب البنكي للتحويل</h3>
+        <p style={{ fontWeight: "bold", fontSize: "18px", color: "darkblue" }}>
+          SA21 8000 0336 6080 1090 8353
+        </p>
+        <p>اسم صاحب الحساب: SALWA S. JBRSGHIR</p>
+      </div>
     </div>
   );
 }
@@ -238,7 +269,6 @@ function Home() {
 export default function App() {
   return (
     <Router>
-      {/* ✅ روابط التصفح */}
       <nav
         style={{
           display: "flex",
@@ -261,9 +291,8 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
       </Routes>
 
-      {/* ✅ زر واتساب عائم */}
       <a
-        href="https://wa.me/966544920067" // غيّري الرقم لرقمك مع كود الدولة بدون +
+        href="https://wa.me/966544920067"
         target="_blank"
         rel="noopener noreferrer"
         style={{
