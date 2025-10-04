@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -92,8 +93,7 @@ function Home() {
 
   const handleLogin = () => {
     if (!loginEmail) {
-     alert("يرجى إدخال الإسم");
-
+      alert("يرجى إدخال الإسم");
       return;
     }
 
@@ -137,7 +137,7 @@ function Home() {
         <p style={{ marginBottom: "1rem" }}>سجّل دخولك للمتابعة</p>
         <input
           type="email"
-          placeholder="أدخل بريدك الإلكتروني"
+          placeholder="أدخل الاسم "
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
           style={{
@@ -260,6 +260,33 @@ export default function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
+
+      {/* ✅ زر واتساب عائم */}
+      <a
+        href="https://wa.me/966544920067" // غيّري الرقم لرقمك مع كود الدولة بدون +
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          backgroundColor: "#25D366",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
+          zIndex: 1000
+        }}
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+          style={{ width: "35px", height: "35px" }}
+        />
+      </a>
     </Router>
   );
 }
